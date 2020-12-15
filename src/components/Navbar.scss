@@ -1,0 +1,126 @@
+@import "sass/abstract/variables";
+@import "sass/base/base";
+.navbar {
+  height: 7rem;
+  position: fixed;
+  width: calc(100% - #{$sidebar-width});
+  margin-left: $sidebar-width;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s;
+  // overflow: hidden;
+  &--small {
+    width: calc(100% - #{$sidebar-expanded-width});
+    margin-left: $sidebar-expanded-width;
+  }
+  &__logo { 
+    height: 8rem;
+    padding: 1rem 0;
+    margin: 4rem;
+  }
+  &__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__search-box {
+      padding: 2rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+
+      &__search-icon {
+        width: 1rem;
+        font-size: 3rem;
+        padding-bottom: 1rem;
+        color: #ddd;
+        border-bottom: 2px solid #ddd;
+      }
+      &--active > &__search-icon {
+        color: $primary-color;
+        border-bottom: 2px solid $primary-color;
+      }
+      &__input {
+        flex-grow: 2;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #ddd;
+        padding: 1rem;
+        font-size: 2rem;
+        &:focus {
+          border-bottom: 2px solid $primary-color;
+          color: $primary-color;
+        }
+      }
+    }
+    &__user-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #6e6d7a;
+
+      &__icon {
+        font-size: 3rem;
+      }
+      &__down-arrow {
+        font-size: 1.3rem;
+        display: inline-block;
+        margin: 0.2rem;
+        transition: all 0.5s;
+      }
+      &:hover &__down-arrow {
+        transform: rotate(180deg);
+      }
+      &:hover &__dropdown {
+        display: flex;
+      }
+      &__dropdown {
+        position: absolute;
+        display: none;
+        height: 10rem;
+        top: 5rem;
+        right: 0.5rem;
+        min-width: 15rem;
+        background-color: white;
+        flex-direction: column;
+        border-radius: 0.8rem;
+        box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.15);
+        z-index: 2;
+        background-clip: padding-box;
+        padding: 2rem 0;
+        &::before {
+          content: "";
+          width: 0;
+          height: 0;
+          position: absolute;
+          top: -6px;
+          left: 80%;
+          -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 8px solid #fff;
+        }
+        &__link {
+          font-size: 2rem;
+          font-weight: 300;
+          color: #6e6d7a;
+          padding: 0.5rem 1rem;
+          &__icon {
+            display: inline-block;
+            margin-right: 1rem;
+          }
+          &:hover {
+            background-color: $primary-color;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ export default class HttpService {
     let authenticatedHttpClient = axios.create({baseURL: 'http://localhost:8000/'});
     authenticatedHttpClient.interceptors.request.use(
       function (config) {
-        const token = localStorage.getItem("key");
+        const token = localStorage.getItem("token");
         if(token) {
         config.headers.Authorization = `Token ${token}`;
         }

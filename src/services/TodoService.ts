@@ -1,7 +1,7 @@
 import HttpService from "./HttpService";
 import Todo from "../models/Todo";
 export default class TodoService {
-  static fetchTodos = async () => {
+  static fetchTodos = async (): Promise<Todo[] | null> => {
     const client = HttpService.getAuthenticatedHttpClient();
     try {
       const response = await client.get("api/todo/all/");
@@ -10,6 +10,7 @@ export default class TodoService {
       return todos;
     } catch (error) {
       console.log(error.response);
+      return null;
     }
   };
 
